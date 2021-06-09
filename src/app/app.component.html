@@ -21,6 +21,13 @@
 
 <mat-sidenav-container hasBackdrop="false">
   <mat-sidenav #sidenav class="mat-elevation-z8">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option [routerLink]="[route.url]" *ngFor="let route of routes"
+        [value]="route.url">
+        <mat-icon mat-list-icon>{{route.icon}}</mat-icon>
+        {{route.name}}
+      </mat-list-option>
+    </mat-selection-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="container mat-elevation-z8">
