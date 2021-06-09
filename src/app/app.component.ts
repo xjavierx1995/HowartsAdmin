@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular11Root';
+  title = 'Administrador Howarts';
+  routes: object[] = [
+    {
+      name: 'Personajes',
+      url: '/characters',
+      icon: 'dashboard'
+    },
+    {
+      name: 'Estudiantes',
+      url: '/students',
+      icon: 'theaters'
+    },
+    {
+      name: 'Profesores',
+      url: '/teachers',
+      icon: 'person'
+    }
+  ];
 }
