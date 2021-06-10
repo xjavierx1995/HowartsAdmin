@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterService } from 'src/app/services/character.service';
 
 @Component({
   selector: 'app-characters',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharactersComponent implements OnInit {
 
-  constructor() { }
+  house: string = 'slytherin';
+  characters: object[] = [];
+  displayedColumns: string[] = [
+    'name',
+    'patronus',
+    'age',
+    'image',
+  ];
+
+  constructor(
+    private characterService: CharacterService
+  ) { }
 
   ngOnInit(): void {
+    this.getCharacter();
   }
 
+  getCharacter(){
+    console.log(this.house);
+
+    this.characterService.getCharacters(this.house).subscribe((res: object[]) => {
+      console.log(res);
+      this.characters = res;
+    });
+
+  }
 }

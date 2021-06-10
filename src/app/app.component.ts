@@ -11,17 +11,17 @@ export class AppComponent {
     {
       name: 'Personajes',
       url: '/characters',
-      icon: 'dashboard'
+      icon: 'contact_page'
     },
     {
       name: 'Estudiantes',
       url: '/students',
-      icon: 'theaters'
+      icon: 'groups'
     },
     {
       name: 'Profesores',
       url: '/teachers',
-      icon: 'person'
+      icon: 'contact_mail'
     }
   ];
 }
