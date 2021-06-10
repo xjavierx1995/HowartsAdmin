@@ -8,6 +8,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [],
   imports: [
@@ -19,7 +20,8 @@ import {MatTableModule} from '@angular/material/table';
     MatListModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule
   ],
   exports:[
     MatToolbarModule,
@@ -29,7 +31,8 @@ import {MatTableModule} from '@angular/material/table';
     MatListModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule
   ]
 })
 export class MaterialModule { }

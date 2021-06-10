@@ -16,6 +16,7 @@ export class CharactersComponent implements OnInit {
     'age',
     'image',
   ];
+  search: string = '';
 
   constructor(
     private characterService: CharacterService
