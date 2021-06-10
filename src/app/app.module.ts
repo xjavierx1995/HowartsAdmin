@@ -12,13 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from './pipes/pipes.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { TableCardComponent } from './shared/table-card/table-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharactersComponent,
     StudentsComponent,
-    TeachersComponent
+    TeachersComponent,
+    TableCardComponent
   ],
   imports: [
     BrowserModule,
