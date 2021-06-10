@@ -10,7 +10,6 @@ import { StudentService } from 'src/app/services/student.service';
 export class StudentsComponent implements OnInit {
 
   typeView: string = 'table'
-  house: string = 'slytherin';
   students: object[] = [];
 
   constructor(
