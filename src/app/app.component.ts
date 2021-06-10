@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Administrador Howarts';
+  title = 'Personajes';
   routes: object[] = [
     {
       name: 'Personajes',
@@ -24,4 +24,11 @@ export class AppComponent {
       icon: 'contact_mail'
     }
   ];
+  path: string = '';
+
+  ngOnInit(): void {
+    this.path = window.location.pathname.split('/')[1];
+    let route = this.routes.find(r => r['url'] == '/'+this.path)
+    this.title = route['name'];
+  }
 }
