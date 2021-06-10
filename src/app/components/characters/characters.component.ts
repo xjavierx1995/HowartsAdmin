@@ -8,6 +8,7 @@ import { CharacterService } from 'src/app/services/character.service';
 })
 export class CharactersComponent implements OnInit {
 
+  typeView: string = 'table'
   house: string = 'slytherin';
   characters: object[] = [];
   displayedColumns: string[] = [
