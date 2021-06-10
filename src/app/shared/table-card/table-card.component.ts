@@ -9,7 +9,7 @@ export class TableCardComponent implements OnInit {
 
   @Input () typeView: string;
   @Input () characters: object[] = [];
-  @Input () search: string = '';
+  // @Input () search: string = '';
 
   // typeView: string = 'table'
   // house: string = 'slytherin';
@@ -20,7 +20,7 @@ export class TableCardComponent implements OnInit {
     'age',
     'image',
   ];
-  // search: string = '';
+  search: string = '';
 
   constructor() { }
 
