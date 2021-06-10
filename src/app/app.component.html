@@ -4,7 +4,7 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>Administrador Howarts {{title ? "- "+title : ''}} </span>
-  <span class="spacer"></span>
+  <!-- <span class="spacer"></span> -->
   <!-- <button
     mat-icon-button
     matTooltip="Iniciar sersion"
@@ -19,7 +19,7 @@
   </button> -->
 </mat-toolbar>
 
-<mat-sidenav-container hasBackdrop="false">
+<mat-sidenav-container>
   <mat-sidenav #sidenav class="mat-elevation-z8">
     <mat-selection-list [multiple]="false">
       <mat-list-option (click)="title = route.name" [routerLink]="[route.url]" *ngFor="let route of routes"

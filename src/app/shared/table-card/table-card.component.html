@@ -46,7 +46,7 @@
           <mat-card-title>{{item.name}}</mat-card-title>
           <mat-card-subtitle>Edad: {{item.dateOfBirth | age: item.yearOfBirth}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="item.image" alt="Photo of a Shiba Inu">
+        <img mat-card-image [src]="item.image">
         <mat-card-content>
           <p>
             Patronus: {{item.patronus ? item.patronus : 'Desconocido'}}
