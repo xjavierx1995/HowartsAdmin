@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CharacterService } from 'src/app/services/character.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class CharactersComponent implements OnInit {
   search: string = '';
 
   constructor(
-    private characterService: CharacterService
+    private characterService: CharacterService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -28,10 +30,9 @@ export class CharactersComponent implements OnInit {
   }
 
   getCharacter(){
-    console.log(this.house);
-
+    this.spinner.show();
     this.characterService.getCharacters(this.house).subscribe((res: object[]) => {
-      console.log(res);
+      this.spinner.hide();
       this.characters = res;
     });
 
