@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AgePipe } from './age.pipe';
 import { FilterPipe } from './filter.pipe';
 
@@ -7,8 +6,6 @@ import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [AgePipe, FilterPipe],
-  imports: [
-    CommonModule
-  ]
+  exports: [AgePipe, FilterPipe]
 })
 export class PipesModule { }

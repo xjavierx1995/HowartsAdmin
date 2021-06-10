@@ -40,7 +40,7 @@
   <!-- age Column -->
   <ng-container matColumnDef="age">
     <th mat-header-cell *matHeaderCellDef> Edad </th>
-    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | age: element.yearOfBirth}} </td>
   </ng-container>
 
   <!-- image Column -->
