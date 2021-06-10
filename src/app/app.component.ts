@@ -6,22 +6,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Administrador Howarts';
+  title = 'Personajes';
   routes: object[] = [
     {
       name: 'Personajes',
       url: '/characters',
-      icon: 'dashboard'
+      icon: 'contact_page'
     },
     {
       name: 'Estudiantes',
       url: '/students',
-      icon: 'theaters'
+      icon: 'groups'
     },
     {
       name: 'Profesores',
       url: '/teachers',
-      icon: 'person'
+      icon: 'contact_mail'
     }
   ];
+  path: string = '';
+
+  ngOnInit(): void {
+    this.path = window.location.pathname.split('/')[1];
+    let route = this.routes.find(r => r['url'] == '/'+this.path)
+    this.title = route['name'];
+  }
 }
