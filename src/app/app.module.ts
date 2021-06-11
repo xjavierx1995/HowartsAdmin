@@ -9,7 +9,7 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { StudentsComponent } from './components/students/students.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from './pipes/pipes.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TableCardComponent } from './shared/table-card/table-card.component';
@@ -34,6 +34,7 @@ import { ModalNewStudentComponent } from './shared/modal-new-student/modal-new-s
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxSpinnerModule
   ],
   providers: [],
