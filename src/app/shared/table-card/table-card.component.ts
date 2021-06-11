@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table-card',
@@ -9,22 +9,35 @@ export class TableCardComponent implements OnInit {
 
   @Input () typeView: string;
   @Input () characters: object[] = [];
-  @Input () search: string = '';
-
-  // typeView: string = 'table'
-  // house: string = 'slytherin';
-  // characters: object[] = [];
+  @Input () actions: boolean = false;
+  @Output() editEmit = new EventEmitter<any>();
+  @Output() deleteEmit = new EventEmitter<any>();
   displayedColumns: string[] = [
     'name',
     'patronus',
     'age',
     'image',
   ];
-  // search: string = '';
+  search: string = '';
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+    if (this.actions) {
+      this.displayedColumns.push('actions');
+    }
+  }
+
+  edit(item, index){
+    item.index = index;
+    this.editEmit.emit(item);
+  }
+
+  delete(item, index){
+    item.index = index;
+    this.deleteEmit.emit(item);
   }
 
 }

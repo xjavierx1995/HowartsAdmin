@@ -19,6 +19,11 @@ export class AppComponent {
       icon: 'groups'
     },
     {
+      name: 'Nuevos estudiantes',
+      url: '/new-students',
+      icon: 'person_add_alt'
+    },
+    {
       name: 'Profesores',
       url: '/teachers',
       icon: 'contact_mail'

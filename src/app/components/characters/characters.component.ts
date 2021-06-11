@@ -12,13 +12,6 @@ export class CharactersComponent implements OnInit {
   typeView: string = 'table'
   house: string = 'slytherin';
   characters: object[] = [];
-  displayedColumns: string[] = [
-    'name',
-    'patronus',
-    'age',
-    'image',
-  ];
-  search: string = '';
 
   constructor(
     private characterService: CharacterService,

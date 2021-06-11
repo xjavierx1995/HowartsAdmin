@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>Nueva solicitud</h1>
+<form [formGroup]="validations_form" (ngSubmit)="register(validations_form.value)" style="width: 100%;">
+  <div mat-dialog-content style="text-align: center;">
+
+    <img class="avatar" style="margin-left: 14%;" [src]="img | safeUrl">
+    <button color="primary" type="button" mat-mini-fab (click)="fileInput.click()" style="right: 40px; top: 45px;">
+      <mat-icon>photo_camera</mat-icon>
+    </button>
+    <input hidden formControlName="image" #fileInput type="file" id="file" (change)="onFileUpdate($event)">
+    <!-- <input matInput formControlName="image"> -->
+    <ng-container *ngFor="let validation of validation_messages.image">
+      <div *ngIf="validations_form.get('image').hasError(validation.type) && (validations_form.get('image').dirty || validations_form.get('image').touched)">
+        {{ validation.message }}
+      </div>
+    </ng-container>
+
+    <mat-form-field style="width: 100%;" class="mt-3">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+      <ng-container *ngFor="let validation of validation_messages.name">
+        <mat-error *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)">
+          {{ validation.message }}
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%;">
+      <mat-label>Patronus</mat-label>
+      <input matInput formControlName="patronus">
+      <ng-container *ngFor="let validation of validation_messages.patronus">
+        <mat-error *ngIf="validations_form.get('patronus').hasError(validation.type) && (validations_form.get('patronus').dirty || validations_form.get('patronus').touched)">
+          {{ validation.message }}
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%;">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input matInput disabled [matDatepicker]="picker" formControlName="birthDay">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
+      <ng-container *ngFor="let validation of validation_messages.birthDay">
+        <mat-error *ngIf="validations_form.get('birthDay').hasError(validation.type) && (validations_form.get('birthDay').dirty || validations_form.get('birthDay').touched)">
+          {{ validation.message }}
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
+
+
+
+  </div>
+  <div mat-dialog-actions>
+    <div class="spacer"></div>
+    <button mat-raised-button type="button" (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button type="submit" [disabled]="!validations_form.valid" color="primary">{{buttonActionTitle}}</button>
+  </div>
+</form>

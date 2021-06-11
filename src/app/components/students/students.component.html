@@ -1,1 +1,15 @@
-<p>students works!</p>
+<ngx-spinner color = "#c2185b"></ngx-spinner>
+<div class="row">
+  <div class="col-lg-2 col-sm-3 mb-3">
+    <mat-button-toggle-group [(ngModel)]="typeView">
+      <mat-button-toggle value="table">
+        <mat-icon>table_rows</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="card">
+        <mat-icon>dashboard</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+
+<app-table-card [typeView] = "typeView" [characters] = "students"></app-table-card>
