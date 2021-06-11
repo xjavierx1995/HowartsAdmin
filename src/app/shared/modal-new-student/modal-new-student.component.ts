@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-modal-new-student',
@@ -28,8 +29,8 @@ export class ModalNewStudentComponent implements OnInit {
     ]
   };
 
-  img: string = "https://images.squarespace-cdn.com/content/v1/54bdbaa8e4b06fad9ba682ed/1501533847974-588ZUA6ZEW2M734U2C4B/ke17ZwdGBToddI8pDm48kEO3Xd74g0bqvk55M9KUV357gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmEZprBMNaW6dUYQUrCwR2cS0Aly4N5B3QpIFZ53UruWiU8Sr9h4jG1LHLXD3lG8IY/harry+potter+avatar+for+web-01-01.jpg?format=2500w"
-
+  img: any = "https://images.squarespace-cdn.com/content/v1/54bdbaa8e4b06fad9ba682ed/1501533847974-588ZUA6ZEW2M734U2C4B/ke17ZwdGBToddI8pDm48kEO3Xd74g0bqvk55M9KUV357gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmEZprBMNaW6dUYQUrCwR2cS0Aly4N5B3QpIFZ53UruWiU8Sr9h4jG1LHLXD3lG8IY/harry+potter+avatar+for+web-01-01.jpg?format=2500w"
+  fileImg: any;
   constructor(
     public dialogRef: MatDialogRef<ModalNewStudentComponent>,
     private formBuilder: FormBuilder,
@@ -49,7 +50,7 @@ export class ModalNewStudentComponent implements OnInit {
         // Validators.required,
         // Validators.maxLength(255),
       ])),
-      birthDay: new FormControl({value: '', disabled: true}, Validators.compose([
+      birthDay: new FormControl('', Validators.compose([
         Validators.required,
         Validators.maxLength(255),
       ])),
@@ -61,8 +62,13 @@ export class ModalNewStudentComponent implements OnInit {
   }
 
   register(form){
-    console.log(form);
     form.type = 'submit';
+    form.params = {
+      name: form.name,
+      patronus: form.patronus,
+      image: this.img,
+      dateOfBirth: moment(form.birthDay).format('DD-MM-yyyy')
+    }
     this.dialogRef.close(form);
   }
 
@@ -74,7 +80,12 @@ export class ModalNewStudentComponent implements OnInit {
   }
 
   onFileUpdate(e){
-    console.log(e);
-
+    let file = e.target.files[0];
+    let _this = this;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      _this.img = reader.result;
+    }
+    reader.readAsDataURL(file);
   }
 }

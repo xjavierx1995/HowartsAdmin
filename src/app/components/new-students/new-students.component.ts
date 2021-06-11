@@ -11,7 +11,7 @@ import { ModalNewStudentComponent } from 'src/app/shared/modal-new-student/modal
 export class NewStudentsComponent implements OnInit {
 
   typeView: string = 'table'
-  students: object[] = [];
+  students: any[] = [];
 
   constructor(
     private spinner: NgxSpinnerService,
@@ -19,10 +19,15 @@ export class NewStudentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getStudents()
   }
 
   getStudents(){
-    // this.spinner.show();
+    this.spinner.show();
+
+    let studentStorage: any = JSON.parse(localStorage.getItem('students'));
+    this.students = studentStorage ? studentStorage : this.students;
+    this.spinner.hide();
   }
 
   newModal(){
@@ -34,8 +39,15 @@ export class NewStudentsComponent implements OnInit {
 
       if (result.type === 'submit') {
         this.spinner.show()
-
+        this.storeStudents(result.params);
       }
     });
+  }
+
+  storeStudents(params){
+    this.students.push(params);
+    localStorage.setItem('students', JSON.stringify(this.students));
+    this.getStudents();
+    this.spinner.hide();
   }
 }
