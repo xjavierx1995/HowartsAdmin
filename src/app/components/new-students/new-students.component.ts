@@ -50,4 +50,12 @@ export class NewStudentsComponent implements OnInit {
     this.getStudents();
     this.spinner.hide();
   }
+
+  editStudent(item){
+    console.log(item);
+
+  }
+  deleteStudent(item){
+    console.log(item);
+  }
 }

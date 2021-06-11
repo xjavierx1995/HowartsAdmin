@@ -20,4 +20,10 @@
   </div>
 </div>
 
-<app-table-card [typeView] = "typeView" [characters] = "students"></app-table-card>
+<app-table-card
+  (editEmit)="editStudent($event)"
+  (deleteEmit)="deleteStudent($event)"
+  [actions]="true"
+  [typeView]="typeView"
+  [characters]="students"
+></app-table-card>
