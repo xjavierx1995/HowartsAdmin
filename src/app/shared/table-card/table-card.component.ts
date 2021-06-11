@@ -30,11 +30,13 @@ export class TableCardComponent implements OnInit {
     }
   }
 
-  edit(item){
+  edit(item, index){
+    item.index = index;
     this.editEmit.emit(item);
   }
 
-  delete(item){
+  delete(item, index){
+    item.index = index;
     this.deleteEmit.emit(item);
   }
 

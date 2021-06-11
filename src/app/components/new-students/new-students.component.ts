@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ModalNewStudentComponent } from 'src/app/shared/modal-new-student/modal-new-student.component';
 
@@ -16,6 +17,7 @@ export class NewStudentsComponent implements OnInit {
   constructor(
     private spinner: NgxSpinnerService,
     public dialog: MatDialog,
+    public snack: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,11 @@ export class NewStudentsComponent implements OnInit {
     localStorage.setItem('students', JSON.stringify(this.students));
     this.getStudents();
     this.spinner.hide();
+    this.snack.open('Solicitud registrada con exito', 'ok', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration: 5000
+    })
   }
 
   editStudent(item){
@@ -56,6 +63,13 @@ export class NewStudentsComponent implements OnInit {
 
   }
   deleteStudent(item){
-    console.log(item);
+    this.students.splice(item.index, 1);
+    localStorage.setItem('students', JSON.stringify(this.students));
+    this.getStudents();
+    this.snack.open('Solicitud eliminada con exito', 'ok', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration: 5000
+    })
   }
 }
