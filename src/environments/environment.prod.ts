@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'http://hp-api.herokuapp.com/api/'
+  API_URL: 'https://hp-api.onrender.com/api/'
 };
